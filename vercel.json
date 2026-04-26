@@ -1,29 +1,18 @@
 {
   "version": 3,
-  "builds": [
-    {
-      "src": "dist/server/server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "dist/client/**",
-      "use": "@vercel/static"
+  "framework": "vite",
+  "buildCommand": "pnpm run build",
+  "installCommand": "pnpm install",
+  "outputDirectory": "dist/client",
+  "functions": {
+    "api/[[path]].js": {
+      "runtime": "nodejs18.x"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/dist/server/server.js"
+      "dest": "/api/$1"
     }
-  ],
-  "env": {
-    "HERMES_API_URL": "http://127.0.0.1:8642",
-    "HERMES_DASHBOARD_URL": "http://127.0.0.1:9119",
-    "BLAND_AI_API_KEY": "your-bland-ai-api-key-here",
-    "COMPANY_DOMAINS": "www.sahjonycapital.com,sahjonycapital.com",
-    "COMPANY_NAME": "SAHJONY CAPITAL LLC"
-  },
-  "framework": "vite",
-  "buildCommand": "pnpm run build",
-  "installCommand": "pnpm install"
+  ]
 }
