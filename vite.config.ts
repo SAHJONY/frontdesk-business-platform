@@ -452,7 +452,7 @@ const config = defineConfig(({ mode, command }) => {
       watch: {
         // Exclude generated route tree — TanStack Router's file watcher
         // detects its own output as a change → infinite regeneration loop
-        ignored: ['**/routeTree.gen.ts'],
+        ignored: ['**/routeTree.gen.ts', '**/venv/**', '**/.venv/**', '**/__pycache__/**', '**/*.pyc'],
       },
       proxy: {
         // WebSocket proxy: clients connect to /ws-hermes on the Hermes Workspace

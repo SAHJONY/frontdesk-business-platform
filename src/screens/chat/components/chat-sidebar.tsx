@@ -563,7 +563,8 @@ function ChatSidebarComponent({
   const isTasksActive = pathname === '/tasks'
   const isConductorActive = pathname === '/conductor'
   const isOperationsActive = pathname === '/operations'
-  const mainRoutes = ['/chat', '/new', '/files', '/terminal']
+  const isRealEstateActive = pathname === '/real-estate'
+  const mainRoutes = ['/chat', '/new', '/files', '/terminal', '/real-estate']
   const knowledgeRoutes = ['/memory', '/skills']
   const systemRoutes = ['/settings', '/logs']
 
@@ -765,6 +766,13 @@ function ChatSidebarComponent({
       icon: DashboardSquare01Icon,
       label: t('nav.dashboard'),
       active: isDashboardActive,
+    },
+    {
+      kind: 'link',
+      to: '/real-estate',
+      icon: PencilEdit02Icon,
+      label: 'Real Estate',
+      active: isRealEstateActive,
     },
     {
       kind: 'link',

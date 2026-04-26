@@ -1,0 +1,19 @@
+{
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "env": {
+    "HERMES_API_URL": "http://127.0.0.1:8642",
+    "HERMES_DASHBOARD_URL": "http://127.0.0.1:9119",
+    "BLAND_AI_API_KEY": "your-bland-ai-api-key-here",
+    "COMPANY_DOMAINS": "www.sahjonycapital.com,sahjonycapital.com"
+  },
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://www.sahjonycapital.com",
+      "permanent": true
+    }
+  ]
+}

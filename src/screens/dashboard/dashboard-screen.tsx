@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useNavigate } from '@tanstack/react-router'
 import { useEffect, useMemo, useState } from 'react'
+import { COMPANY_CONFIG } from '@/config/company'
 import {
   Area,
   AreaChart,
@@ -871,7 +872,238 @@ export function DashboardScreen() {
         />
       )}
 
-      {/* ── Charts + Model + Skills ── */}
+      {/* ── SAHJONY CAPITAL LLC Platform ── */}
+      <div className="rounded-xl border border-white/15 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-6">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="text-2xl font-bold text-white">{COMPANY_CONFIG.name}</h2>
+            <p className="text-white/70">Hermes Multi-Agent Brain: CONNECTED</p>
+            <p className="text-white/50 text-sm">{COMPANY_CONFIG.domains.join(' • ')}</p>
+          </div>
+          <span className="rounded-lg bg-emerald-500/20 px-3 py-1 text-sm font-semibold text-emerald-300">
+            LIVE - {COMPANY_CONFIG.business.phase}
+          </span>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div className="bg-white/10 rounded-lg p-4">
+            <h3 className="font-semibold text-white">Hermes Brain Status</h3>
+            <p className="text-green-400">Multi-Agent Orchestration Active</p>
+            <div className="mt-2 space-y-1">
+              <div className="flex justify-between">
+                <span className="text-white/70">Property Analysis</span>
+                <span className="text-green-400">Active</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-white/70">CRM Management</span>
+                <span className="text-green-400">Active</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-white/70">Call Automation</span>
+                <span className="text-green-400">Ready</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-white/70">Portfolio Manager</span>
+                <span className="text-green-400">Active</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-white/70">Cash Buyers Agent</span>
+                <span className="text-green-400">Ready</span>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white/10 rounded-lg p-4">
+            <h3 className="font-semibold text-white">Bland.ai Balance</h3>
+            <p className="text-2xl font-bold text-green-400">$55.16</p>
+            <p className="text-white/70 text-sm">Available for autonomous calls</p>
+          </div>
+          
+          <div className="bg-white/10 rounded-lg p-4">
+            <h3 className="font-semibold text-white">Portfolio Status</h3>
+            <p className="text-2xl font-bold text-white">0 / 10</p>
+            <p className="text-white/70 text-sm">Businesses managed</p>
+          </div>
+          
+          <div className="bg-white/10 rounded-lg p-4">
+            <h3 className="font-semibold text-white">Performance</h3>
+            <p className="text-2xl font-bold text-yellow-400">98.7%</p>
+            <p className="text-white/70 text-sm">Agent success rate</p>
+          </div>
+        </div>
+        
+        {/* Address-to-Deal Analyzer (Hermes Version) */}
+        <div className="bg-white/5 rounded-lg p-4 mb-4">
+          <h3 className="font-semibold text-white mb-2">Address-to-Deal Analyzer (Hermes)</h3>
+          <div className="flex gap-2">
+            <input 
+              type="text" 
+              placeholder="Paste property address" 
+              className="flex-1 bg-white/10 border border-white/20 rounded px-3 py-2 text-white placeholder-white/50"
+            />
+            <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
+              Run Deal Analysis
+            </button>
+          </div>
+          <p className="text-white/70 text-sm mt-2">Hermes-powered property evaluation with multi-source data analysis</p>
+        </div>
+        
+        {/* Lead Intake System */}
+        <div className="bg-white/5 rounded-lg p-4">
+          <h3 className="font-semibold text-white mb-2">Lead Intake System</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-white/70 text-sm mb-1">Property Address</label>
+              <input type="text" className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-white" />
+            </div>
+            <div>
+              <label className="block text-white/70 text-sm mb-1">Contact Phone</label>
+              <input type="text" className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-white" />
+            </div>
+            <div>
+              <label className="block text-white/70 text-sm mb-1">Owner Name</label>
+              <input type="text" className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-white" />
+            </div>
+            <div>
+              <label className="block text-white/70 text-sm mb-1">Follow-up Date</label>
+              <input type="date" className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-white" />
+            </div>
+          </div>
+          <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+            Save Lead & Analyze
+          </button>
+        </div>
+      </div>
+
+      {/* ── Cash Buyers Agent Section ── */}
+        <div className="rounded-xl border border-white/15 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-900 p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-2xl font-bold text-white">Cash Buyers Agent</h2>
+              <p className="text-white/70">Hermes-powered autonomous deal matching for investors</p>
+              <p className="text-white/50 text-sm">Individuals • Hedge Funds • Institutions • Private Capital</p>
+            </div>
+            <span className="rounded-lg bg-green-500/20 px-3 py-1 text-sm font-semibold text-green-300">
+              READY - 0 Buyers
+            </span>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div className="bg-white/10 rounded-lg p-4">
+              <h3 className="font-semibold text-white">Buyer Database</h3>
+              <p className="text-2xl font-bold text-green-400">0</p>
+              <p className="text-white/70 text-sm">Active cash buyers</p>
+            </div>
+            
+            <div className="bg-white/10 rounded-lg p-4">
+              <h3 className="font-semibold text-white">Match Accuracy</h3>
+              <p className="text-2xl font-bold text-blue-400">98.7%</p>
+              <p className="text-white/70 text-sm">Deal-to-buyer precision</p>
+            </div>
+            
+            <div className="bg-white/10 rounded-lg p-4">
+              <h3 className="font-semibold text-white">Deals Matched</h3>
+              <p className="text-2xl font-bold text-yellow-400">0</p>
+              <p className="text-white/70 text-sm">Successful matches</p>
+            </div>
+            
+            <div className="bg-white/10 rounded-lg p-4">
+              <h3 className="font-semibold text-white">Response Rate</h3>
+              <p className="text-2xl font-bold text-purple-400">N/A</p>
+              <p className="text-white/70 text-sm">Buyer engagement</p>
+            </div>
+          </div>
+          
+          {/* Buyer Input Form */}
+          <div className="bg-white/5 rounded-lg p-4 mb-4">
+            <h3 className="font-semibold text-white mb-2">Add Cash Buyer</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-white/70 text-sm mb-1">Buyer Type</label>
+                <select className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-white">
+                  <option value="individual">Individual</option>
+                  <option value="hedgeFund">Hedge Fund</option>
+                  <option value="institution">Institution</option>
+                  <option value="privateCapital">Private Capital</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-white/70 text-sm mb-1">Name</label>
+                <input type="text" className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-white" />
+              </div>
+              <div>
+                <label className="block text-white/70 text-sm mb-1">Contact Email</label>
+                <input type="email" className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-white" />
+              </div>
+              <div>
+                <label className="block text-white/70 text-sm mb-1">Phone</label>
+                <input type="text" className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-white" />
+              </div>
+            </div>
+            <button className="mt-4 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded">
+              Add Buyer to Database
+            </button>
+          </div>
+          
+          {/* Deal Matching Interface */}
+          <div className="bg-white/5 rounded-lg p-4">
+            <h3 className="font-semibold text-white mb-2">Match Deal to Buyers</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-white/70 text-sm mb-1">Property Address</label>
+                <input type="text" className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-white" />
+              </div>
+              <div>
+                <label className="block text-white/70 text-sm mb-1">Purchase Price</label>
+                <input type="text" className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-white" />
+              </div>
+              <div>
+                <label className="block text-white/70 text-sm mb-1">ARV</label>
+                <input type="text" className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-white" />
+              </div>
+              <div>
+                <label className="block text-white/70 text-sm mb-1">Profit Potential</label>
+                <input type="text" className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-white" />
+              </div>
+            </div>
+            <button className="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
+              Find Matching Buyers
+            </button>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="rounded-xl border border-white/15 bg-black/20 p-4">
+            <p className="text-xs text-zinc-300">Bland.ai Balance</p>
+            <p className="mt-1 text-2xl font-bold text-emerald-300">$55.16</p>
+            <p className="mt-1 text-xs text-zinc-400">Ready for calls</p>
+          </div>
+          <div className="rounded-xl border border-white/15 bg-black/20 p-4">
+            <p className="text-xs text-zinc-300">Active Properties</p>
+            <p className="mt-1 text-2xl font-bold text-blue-300">0</p>
+            <p className="mt-1 text-xs text-zinc-400">Ready for analysis</p>
+          </div>
+          <div className="rounded-xl border border-white/15 bg-black/20 p-4">
+            <p className="text-xs text-zinc-300">Portfolio Status</p>
+            <p className="mt-1 text-2xl font-bold text-amber-300">10-business</p>
+            <p className="mt-1 text-xs text-zinc-400">Scalable foundation</p>
+          </div>
+        </div>
+        
+        <div className="mt-4 flex gap-2">
+          <button className="rounded-xl bg-emerald-500 px-4 py-2 text-sm font-semibold text-black">
+            Start AI Call
+          </button>
+          <button className="rounded-xl border border-emerald-300/40 px-4 py-2 text-sm font-semibold text-emerald-200">
+            Property Analysis
+          </button>
+          <button className="rounded-xl border border-blue-300/40 px-4 py-2 text-sm font-semibold text-blue-200">
+            Portfolio Dashboard
+          </button>
+        </div>
+      </div>
+
+
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
         <div className="lg:col-span-5">
           {sessionsAvailable ? (
@@ -941,7 +1173,6 @@ export function DashboardScreen() {
           description={getUnavailableReason('sessions')}
         />
       )}
-      </div>
     </div>
   )
 }
