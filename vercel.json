@@ -1,18 +1,18 @@
 {
   "version": 3,
-  "framework": "vite",
-  "buildCommand": "pnpm run build",
-  "installCommand": "pnpm install",
-  "outputDirectory": "dist/client",
-  "functions": {
-    "api/[[path]].js": {
-      "runtime": "nodejs18.x"
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/api/$1"
+      "dest": "/server.js"
     }
-  ]
+  ],
+  "framework": "vite",
+  "buildCommand": "pnpm run build",
+  "installCommand": "pnpm install"
 }

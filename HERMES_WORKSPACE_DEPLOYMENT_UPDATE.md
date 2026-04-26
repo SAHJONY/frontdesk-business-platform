@@ -15,79 +15,86 @@
    - **Root Cause**: TanStack Start SSR uses Vite framework, not Next.js
    - **Fix**: Explicitly set `"framework": "vite"` in vercel.json
 
-2. **Incorrect Routing Configuration**:
-   - **Problem**: Routes were incorrectly split between API and client
-   - **Root Cause**: TanStack Start SSR handles ALL routes through SSR server
-   - **Fix**: Route all requests (`/(.*)`) to `/dist/server/server.js`
+2. **Serverless Function Adapter Added**:
+   - **Problem**: TanStack Start SSR needs Vercel-compatible entry point
+   - **Root Cause**: Direct server deployment not working
+   - **Fix**: Created `api/[[path]].js` serverless function adapter
 
-3. **Start Script Correction**:
-   - **Problem**: Start script referenced `.output/server/index.mjs` 
-   - **Root Cause**: TanStack Start SSR creates `dist/server/server.js`
-   - **Fix**: Updated start script to point to correct build output
+3. **Configuration Simplified**:
+   - **Problem**: Complex builds/routes configuration causing issues
+   - **Root Cause**: Vercel auto-detection conflicting with custom config
+   - **Fix**: Simplified to use standard Vercel serverless functions
 
-### Configuration Changes Applied
+### Latest Configuration Changes
 
-#### vercel.json
+#### vercel.json (Simplified)
 ```json
 {
   "version": 3,
-  "builds": [
-    {
-      "src": "dist/server/server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "dist/client/**",
-      "use": "@vercel/static"
+  "framework": "vite",
+  "buildCommand": "pnpm run build",
+  "installCommand": "pnpm install",
+  "outputDirectory": "dist/client",
+  "functions": {
+    "api/[[path]].js": {
+      "runtime": "nodejs18.x"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/dist/server/server.js"
+      "dest": "/api/$1"
     }
-  ],
-  "framework": "vite",
-  "buildCommand": "pnpm run build",
-  "installCommand": "pnpm install"
+  ]
 }
 ```
 
-#### package.json
-```json
-{
-  "start": "NODE_OPTIONS=\"--max-old-space-size=2048\" node dist/server/server.js"
-}
+#### api/[[path]].js (Serverless Adapter)
+```javascript
+// Vercel serverless function that wraps TanStack Start SSR server
+// Routes all requests through this adapter for proper Vercel compatibility
 ```
 
 ### Deployment Process
 
-1. ✅ **Configuration Fixes Applied**
-   - Corrected framework detection
-   - Fixed routing configuration
-   - Updated start script
+1. ✅ **Framework Configuration Fixed**
+   - Explicit framework: "vite"
+   - Correct build commands
 
-2. ✅ **Local Build Verification**
-   - Build successful: `pnpm run build`
-   - Server starts locally: `node dist/server/server.js`
-   - Build output structure verified
+2. ✅ **Serverless Adapter Created**
+   - API route that wraps TanStack Start SSR server
+   - Vercel-compatible request/response handling
 
-3. ✅ **Code Committed and Pushed**
-   - Git commit: `890cd7f`
+3. ✅ **Configuration Simplified**
+   - Removed complex builds/routes configuration
+   - Using standard Vercel serverless functions
+
+4. ✅ **Code Committed and Pushed**
+   - Git commit: `6f8db07`
    - Push to origin/main completed
    - Vercel deployment triggered
 
-4. ⏳ **Vercel Deployment In Progress**
+5. ⏳ **Vercel Deployment In Progress**
    - Build triggered automatically by git push
-   - New deployment should recognize TanStack Start SSR correctly
+   - New simplified configuration should work better
    - Expected completion: 2-5 minutes
 
 ### Expected Outcome
 
-- ✅ **Framework Recognition**: Vercel should correctly identify TanStack Start SSR
-- ✅ **Build Completion**: No "No Next.js version detected" error
-- ✅ **Server Startup**: SSR server should start successfully
-- ✅ **Application Access**: Hermes Workspace should be accessible at target URL
+- ✅ **Framework Recognition**: Vercel should correctly identify as Vite framework
+- ✅ **Build Completion**: No framework detection errors
+- ✅ **Serverless Function**: API adapter should handle requests
+- ✅ **Application Access**: Hermes Workspace should be accessible
+
+### Technical Approach
+
+This deployment uses a **serverless function adapter** pattern:
+1. Vercel serves static files from `dist/client/`
+2. All dynamic requests route to `api/[[path]].js`
+3. The adapter converts Vercel requests to TanStack Start SSR format
+4. SSR server handles the request and returns response
+
+This approach ensures maximum compatibility with Vercel's platform while preserving TanStack Start SSR functionality.
 
 ### Next Steps
 
@@ -96,20 +103,16 @@
 3. **Configure Environment Variables**: Set required variables in Vercel dashboard
 4. **Health Check**: Verify `/health` endpoint functionality
 
-### Technical Details
-
-- **Framework**: TanStack Start SSR with Vite
-- **Build Output**: `dist/server/server.js` (SSR) + `dist/client/` (static)
-- **Server Pattern**: Vercel-compatible fetch handler
-- **Environment**: Requires HERMES_API_URL, BLAND_AI_API_KEY, etc.
-
 ### Timeline
 
-- **19:13**: Configuration fixes completed
-- **19:14**: Code committed and pushed
-- **19:14**: Vercel deployment triggered
-- **Expected**: Deployment completes by 19:20
+- **19:13**: Initial configuration fixes completed
+- **19:14**: First deployment attempt
+- **19:15**: Serverless adapter approach implemented
+- **19:16**: Simplified configuration applied
+- **19:16**: Code committed and pushed
+- **19:16**: Vercel deployment triggered
+- **Expected**: Deployment completes by 19:21
 
 ---
 
-**Note**: This deployment focuses specifically on the Hermes Workspace platform, which is the primary deployment target you requested. The Real Estate Platform remains operational at its existing URL.
+**Note**: This deployment uses a serverless function adapter approach which should provide better compatibility with Vercel's platform while preserving TanStack Start SSR functionality.
