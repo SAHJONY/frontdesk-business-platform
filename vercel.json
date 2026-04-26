@@ -22,5 +22,8 @@
     "BLAND_AI_API_KEY": "your-bland-ai-api-key-here",
     "COMPANY_DOMAINS": "www.sahjonycapital.com,sahjonycapital.com",
     "COMPANY_NAME": "SAHJONY CAPITAL LLC"
-  }
+  },
+  "framework": "vite",
+  "buildCommand": "pnpm run build",
+  "installCommand": "pnpm install"
 }

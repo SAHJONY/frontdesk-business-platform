@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.1.0",
-    "@hono/node-server": "^4.2.2",
+    "@hono/node-server": "^2.0.0",
     "hono": "^4.6.12",
     "@hugeicons/core-free-icons": "^3.1.1",
     "@hugeicons/react": "^1.1.4",
