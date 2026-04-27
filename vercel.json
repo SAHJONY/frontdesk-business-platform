@@ -14,5 +14,10 @@
   ],
   "framework": "vite",
   "buildCommand": "npm run build",
-  "installCommand": "npm install",
+  "installCommand": "npm install && pip3 install -r requirements.txt",
+  "functions": {
+    "server.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
